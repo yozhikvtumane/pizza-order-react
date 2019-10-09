@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, useRouteMatch, useParams } from 'react-router-dom'
 
 // Three stages:
 
@@ -9,6 +9,9 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 // Fourth: Address and checkout
 
 class PizzaApp extends Component {
+	constructor(props) {
+		super(props)
+	}
 	render() {
 		console.log("pizzaapp", this.props)
 		return (
@@ -27,7 +30,9 @@ class PizzaApp extends Component {
 						<Link to={`/toppings`}>Continue with toppings and drinks</Link>
 					</div>
 				</div>
-				<Route path={`/toppings`} component={Toppings}/>	
+				<Route path={`/toppings`} render={(routeProps) => {
+					return <Toppings {...routeProps} testProp="1234"/>				
+				}}  />
 			</Router>
 			
 		)		
@@ -41,21 +46,21 @@ class Toppings extends Component {
 	constructor(props) {
 		super(props)
 		console.log(props)
-		
+		// let router = useRouteMatch()
+		// this.router = useRouteMatch()
+		// console.log(router)
 	}
 	render() {
 		return (
-			<Fragment>
 			<div className="selectionBox">
-				<h3>This is toppings component</h3>
+				<h3>This is toppings component with a test prop which value is {this.props.testProp}</h3>
 				<div>
 					<Link to={`${this.props.match.url}/drinks`}>Continue with drinks</Link>
 				</div>
+				<Route path={`${this.props.match.path}/:drinks`} component={Drinks} />
 				
 			
 			</div>
-			<Route path={`${this.props.match.path}/:drinks`} component={Drinks}/>	
-			</Fragment>
 		)	
 	}
 	
@@ -65,9 +70,28 @@ class Toppings extends Component {
 function Drinks(props) {
 	console.log("Drinks" , props)
 	return (
-		<div className="selectionBox"><h3>Drinks</h3></div>
+		<Fragment>
+			<div className="selectionBox">
+				<h3>Drinks</h3>
+				<ul>
+					<li>Drink Selection 1</li>
+					<li>Drink Selection 2</li>
+					<li>Drink Selection 3</li>
+					<li>Drink Selection 4</li>
+					<li>Drink Selection 5</li>
+				</ul>
+				<Link to={`${props.match.url}/checkout`}>Continue to checkout</Link>
+			</div>
+			<Route path={`${props.match.path}/:checkout`} component={Checkout} />
+		</Fragment>
 	)
 }
 
-
+function Checkout() {
+	return (
+		<div>
+			<h3>Order checkout</h3>
+		</div>
+	)
+}
 export default PizzaApp
