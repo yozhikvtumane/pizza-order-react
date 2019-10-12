@@ -126,28 +126,6 @@ function Drinks(props) {
 					<li>Drink Selection 4</li>
 					<li>Drink Selection 4</li>
 					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 4</li>
-					<li>Drink Selection 5</li>
 				</ul>
 				<Link to={`${props.match.url}/checkout`}>Continue to checkout</Link>
 			</div>
