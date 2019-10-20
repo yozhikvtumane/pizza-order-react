@@ -58,7 +58,6 @@ class PizzaApp extends Component {
 						<li>Pizza Choice 1</li>
 						<li>Pizza Choice 2</li>
 						<li>Pizza Choice 3</li>
-						<li>Pizza Choice 4</li>
 						<li>Pizza Choice 5</li>
 					</ul>
 					<div>
